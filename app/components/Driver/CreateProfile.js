@@ -21,6 +21,7 @@ import { red } from '@material-ui/core/colors';
 import ImageIcon from '@material-ui/icons/Image';
 import { Grid, CardMedia } from '@material-ui/core';
 import FileBase64 from 'react-file-base64';
+import image from '../images/person.jpg'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -182,8 +183,15 @@ function CreateProfile(props) {
     const classes = useStyles();
     const { createProfile } = props;
     const [open, setOpen] = React.useState(false);
-    const [file, chooseFile] = React.useState([]);
-    const {addDriver, setValue, updateData, selectDriver, updateDriver} = props;
+    const {
+        addDriver, 
+        setValue, 
+        updateData, 
+        selectDriver, 
+        updateDriver,
+        errs,
+        getErrs
+    } = props;
     const [data, changeData] = React.useState(
         {...updateData.driver}
     
@@ -196,14 +204,20 @@ function CreateProfile(props) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newData = {
-            ...data,
-            base64: file ? '' : file[0].base64
-        };
-        addDriver(newData);
-        setValue(1);
-        setValue(0)
+        
     }
+    const handleCreate = () =>{
+        addDriver(data, ()=>{
+            getErrs({});
+            setValue(0);
+        });
+    }
+    const handleSaveChange = ()=>{
+        updateDriver(updateData.driver._id, data, ()=>{
+            setValue(1);
+            setValue(0)
+        })
+    } 
     const handleChange = (e) => {
         changeData({ ...data, [e.target.name]: e.target.value })
     }
@@ -211,7 +225,7 @@ function CreateProfile(props) {
         changeData({ ...data, [name]: event.target.value });
       };
     const getFiles = (files) => {
-        chooseFile(files)
+        changeData({ ...data, base64: files[0].base64 })
     }
     return (
         <React.Fragment>
@@ -233,7 +247,11 @@ function CreateProfile(props) {
                                     </div>
                                     <Avatar
                                         alt="Remy Sharp"
-                                        src={file.length ? file[0].base64 : "https://www.digitalseed.dk/wp-content/uploads/2016/02/avatar_male.jpg"} className={classes.bigAvatar} >
+                                        src={
+                                            data.base64 ? 
+                                            data.base64 : 
+                                            image} 
+                                        className={classes.bigAvatar} >
                                     </Avatar>
                                 </Button>
                                     </Grid>
@@ -245,6 +263,8 @@ function CreateProfile(props) {
                                                 name='name'
                                                 value={data.name}
                                                 onChange={handleChange}
+                                                error = {errs.name ? true : false}
+                                                helperText={errs.name ? errs.name : ''}
                                             />
                                             <TextField
                                                 style={{ width: "100%", marginBottom: 24 }}
@@ -252,6 +272,8 @@ function CreateProfile(props) {
                                                 name='birthday'
                                                 value={data.birthday}
                                                 onChange={handleChange}
+                                                error = {errs.birthday ? true : false}
+                                                helperText={errs.birthday ? errs.birthday : ''}
                                             />
                                             <TextField
                                                 style={{ width: "100%", marginBottom: 24 }}
@@ -259,6 +281,8 @@ function CreateProfile(props) {
                                                 value={data.number}
                                                 name='number'
                                                 onChange={handleChange}
+                                                error = {errs.number ? true : false}
+                                                helperText={errs.number ? errs.number : ''}
                                             />
                                         </ListItem>
                                     </Grid>
@@ -270,6 +294,8 @@ function CreateProfile(props) {
                                                 name='start'
                                                 value={data.start}
                                                 onChange={handleChange}
+                                                error = {errs.start ? true : false}
+                                                helperText={errs.start ? errs.start : ''}
                                             />
                                             <TextField
                                                 select
@@ -283,6 +309,8 @@ function CreateProfile(props) {
                                                         className: classes.menu,
                                                     },
                                                 }}
+                                                error = {errs.level ? true : false}
+                                                helperText={errs.level ? errs.level : ''}
                                             >
                                                 {currencies1.map(option => (
                                                     <option key={option.value} value={option.value}>
@@ -296,6 +324,8 @@ function CreateProfile(props) {
                                                 value={data.end}
                                                 name='end'
                                                 onChange={handleChange}
+                                                error = {errs.end ? true : false}
+                                                helperText={errs.end ? errs.end : ''}
                                             />
                                         </ListItem>
                                     </Grid>
@@ -313,6 +343,8 @@ function CreateProfile(props) {
                                                         className: classes.menu,
                                                     },
                                                 }}
+                                                error = {errs.rank ? true : false}
+                                                helperText={errs.rank ? errs.rank : ''}
                                             >
                                                 {currencies2.map(option => (
                                                     <option key={option.value} value={option.value}>
@@ -332,6 +364,8 @@ function CreateProfile(props) {
                                                         className: classes.menu,
                                                     },
                                                 }}
+                                                error = {errs.position ? true : false}
+                                                helperText={errs.position ? errs.position : ''}
                                             >
                                                 {currencies3.map(option => (
                                                     <option key={option.value} value={option.value}>
@@ -348,6 +382,8 @@ function CreateProfile(props) {
                                                 value={data.unit}
                                                 name='unit'
                                                 onChange={handleChange}
+                                                error = {errs.unit ? true : false}
+                                                helperText={errs.unit ? errs.unit : ''}
                                             />
 
                                             <TextField
@@ -356,6 +392,8 @@ function CreateProfile(props) {
                                                 name='registArea'
                                                 value={data.registArea}
                                                 onChange={handleChange}
+                                                error = {errs.registArea ? true : false}
+                                                helperText={errs.registArea ? errs.registArea : ''}
                                             />
                                         </ListItem>
                                     </Grid><Grid item xs={4}>
@@ -372,6 +410,8 @@ function CreateProfile(props) {
                                                         className: classes.menu,
                                                     },
                                                 }}
+                                                error = {errs.degree ? true : false}
+                                                helperText={errs.degree ? errs.degree : ''}
                                             >
                                                 {currencies4.map(option => (
                                                     <option key={option.value} value={option.value}>
@@ -385,6 +425,8 @@ function CreateProfile(props) {
                                                 name='dateReceive'
                                                 value={data.dateReceive}
                                                 onChange={handleChange}
+                                                error = {errs.dateReceive ? true : false}
+                                                helperText={errs.dateReceive ? errs.dateReceive : ''}
                                             />
 
                                         </ListItem>
@@ -407,15 +449,15 @@ function CreateProfile(props) {
                                     style={{marginBottom: 10}} 
                                     variant = "outlined" 
                                     color='primary' 
-                                    type = 'submit'>
+                                    type = 'submit'
+                                    onClick={handleCreate}
+                                    >
                                         Thêm hồ sơ
                                 </Button> : <div><Button 
                                     style={{marginBottom: 10}} 
                                     variant = "outlined" 
                                     color='primary'
-                                    onClick={()=>{
-                                        updateDriver(updateData.driver._id, data)
-                                    }} 
+                                    onClick={handleSaveChange} 
                                     type = 'submit'>
                                         Lưu thay đổi hồ sơ
                                 </Button>

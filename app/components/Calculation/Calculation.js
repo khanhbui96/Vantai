@@ -12,30 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Button from '@material-ui/core/Button';
 import Result from './Result';
-// const suggestions = [
-//   { label: 'FORESCAP 3.0', fuel: 'Xăng', norm: '17,5' },
-//   { label: 'FOREVEREST 2,5', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'MITSUBISHI PAJERO 3.0 V6',fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'MITSUBISHI PAJERO 3.5 V6', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'NISSAN PATHFINDER 2.4', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIAssss', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-//   { label: 'KIA', fuel: 'Xăng', norm: '17,5'  },
-// ].map(suggestion => ({
-//   value: suggestion.label,
-//   label: suggestion.label,
-// }));
+
 
 const useStyles = makeStyles(theme => ({
   root: {

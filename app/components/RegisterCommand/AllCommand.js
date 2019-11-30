@@ -85,7 +85,6 @@ function AllCommand(props) {
   const { commands, selectCommand, setValue } = props;
   const decode = jwt_decode(localStorage.getItem('jwt'));
   const [key, changeKey] = React.useState('');
-  console.log(commands)
   const handleChange = e => {
     changeKey(e.target.value);
   };

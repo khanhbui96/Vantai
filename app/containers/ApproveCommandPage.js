@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { connect } from 'react-redux';
 import Wrapper from '../components/HostWrapper';
 import Command from '../components/ApproveCommand/Command';
-import {addCommand, getAll, selectCommand, deleteCommand, updateCommand} from '../actions/command.actions';
+import {addCommand, getAllCommand, selectCommand, deleteCommand, updateCommand} from '../actions/command.actions';
 
 const mapStateToProps = state=>{
   return {
@@ -11,9 +11,9 @@ const mapStateToProps = state=>{
   }
 }
 const ApproveCommandPage = (props)=>{
-  const {getAll, commands} = props;
+  const {getAllCommand, commands} = props;
   useEffect(()=>{
-    getAll()
+    getAllCommand()
   }, [commands.isUpdate])
     return(
         <Wrapper>
@@ -25,7 +25,7 @@ export default connect(
   mapStateToProps,
   {
     addCommand,
-    getAll,
+    getAllCommand,
     selectCommand,
     deleteCommand,
     updateCommand

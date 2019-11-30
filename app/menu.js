@@ -182,92 +182,99 @@ export default class MenuBuilder {
 
   buildDefaultTemplate() {
     const templateDefault = [
+      // {
+      //   label: '&File',
+      //   submenu: [
+      //     {
+      //       label: '&Open',
+      //       accelerator: 'Ctrl+O'
+      //     },
+      //     {
+      //       label: '&Close',
+      //       accelerator: 'Ctrl+W',
+      //       click: () => {
+      //         this.mainWindow.close();
+      //       }
+      //     }
+      //   ]
+      // },
+      // {
+      //   label: '&View',
+      //   submenu:
+      //     process.env.NODE_ENV === 'development'
+      //       ? [
+      //           // {
+      //           //   label: 'Làm mới lại phần mềm',
+      //           //   accelerator: 'Ctrl+R',
+      //           //   click: () => {
+      //           //     this.mainWindow.webContents.reload();
+      //           //   }
+      //           // },
+      //           // {
+      //           //   label: 'Toggle &Full Screen',
+      //           //   accelerator: 'F11',
+      //           //   click: () => {
+      //           //     this.mainWindow.setFullScreen(
+      //           //       !this.mainWindow.isFullScreen()
+      //           //     );
+      //           //   }
+      //           // },
+      //           // {
+      //           //   label: 'Mở công cụ cho nhà phát triển',
+      //           //   accelerator: 'Alt+Ctrl+I',
+      //           //   click: () => {
+      //           //     this.mainWindow.toggleDevTools();
+      //           //   }
+      //           // }
+      //         ]
+      //       : [
+      //           // {
+      //           //   label: 'Toggle &Full Screen',
+      //           //   accelerator: 'F11',
+      //           //   click: () => {
+      //           //     this.mainWindow.setFullScreen(
+      //           //       !this.mainWindow.isFullScreen()
+      //           //     );
+      //           //   }
+      //           // }
+      //         ]
+      // },
       {
-        label: '&File',
+        label: 'Trợ giúp',
         submenu: [
           {
-            label: '&Open',
-            accelerator: 'Ctrl+O'
-          },
-          {
-            label: '&Close',
-            accelerator: 'Ctrl+W',
+            label: 'Làm mới lại phần mềm',
+            accelerator: 'Ctrl+R',
             click: () => {
-              this.mainWindow.close();
-            }
-          }
-        ]
-      },
-      {
-        label: '&View',
-        submenu:
-          process.env.NODE_ENV === 'development'
-            ? [
-                {
-                  label: '&Reload',
-                  accelerator: 'Ctrl+R',
-                  click: () => {
-                    this.mainWindow.webContents.reload();
-                  }
-                },
-                {
-                  label: 'Toggle &Full Screen',
-                  accelerator: 'F11',
-                  click: () => {
-                    this.mainWindow.setFullScreen(
-                      !this.mainWindow.isFullScreen()
-                    );
-                  }
-                },
-                {
-                  label: 'Toggle &Developer Tools',
-                  accelerator: 'Alt+Ctrl+I',
-                  click: () => {
-                    this.mainWindow.toggleDevTools();
-                  }
-                }
-              ]
-            : [
-                {
-                  label: 'Toggle &Full Screen',
-                  accelerator: 'F11',
-                  click: () => {
-                    this.mainWindow.setFullScreen(
-                      !this.mainWindow.isFullScreen()
-                    );
-                  }
-                }
-              ]
-      },
-      {
-        label: 'Help',
-        submenu: [
-          {
-            label: 'Learn More',
-            click() {
-              shell.openExternal('http://electron.atom.io');
+              this.mainWindow.webContents.reload();
             }
           },
           {
-            label: 'Documentation',
-            click() {
-              shell.openExternal(
-                'https://github.com/atom/electron/tree/master/docs#readme'
-              );
-            }
+            label: 'Bạn có thể gửi phản hồi đến email: trongkhanhak96@gmail.com',
+            // click() {
+            //   shell.openExternal('http://electron.atom.io');
+            // }
           },
           {
-            label: 'Community Discussions',
-            click() {
-              shell.openExternal('https://discuss.atom.io/c/electron');
-            }
+            label: 'Liên hệ trực tiếp qua sđt: 0374243669',
+            // click() {
+            //   shell.openExternal(
+            //     'https://github.com/atom/electron/tree/master/docs#readme'
+            //   );
+            // }
           },
-          {
-            label: 'Search Issues',
-            click() {
-              shell.openExternal('https://github.com/atom/electron/issues');
-            }
-          }
+          // {
+          //   label: 'Community Discussions',
+          //   click() {
+          //     shell.openExternal('https://discuss.atom.io/c/electron');
+          //   }
+          // },
+          // {
+          //   label: 'Search Issues',
+          //   click() {
+          //     shell.openExternal('https://github.com/atom/electron/issues');
+          //   }
+          // }
         ]
       }
     ];

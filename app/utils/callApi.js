@@ -4,7 +4,7 @@ const callApi = (method, endpoint, data)=>{
     return axios({
         method,
         data,
-        url: `http://localhost:5000/api${endpoint}`
+        url: `http://23.99.195.35/api${endpoint}`
     }
     )
 };

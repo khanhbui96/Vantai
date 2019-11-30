@@ -8,7 +8,7 @@ import {
 } from '../constants/actions';
 import setAuthHeader from '../utils/setAuthHeader';
 
-export const getAll = () => async dispatch => {
+export const getAllCommand = () => async dispatch => {
     try{
         await setAuthHeader(localStorage.getItem('jwt'));
         const commands = await callApi('get', '/commands/getAll', null);

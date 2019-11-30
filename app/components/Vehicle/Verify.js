@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import RegularVehicles from './RegularVehicles';
+import InforVerify from './InforVerify';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 const Verify = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
- 
+  const {vehicles, selectVehicle, updateData, updateVehicle, commands} = props.vehicleProps;
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -23,14 +26,26 @@ const Verify = props => {
         <div className={classes.root}>
         <AppBar position="static">
             <Tabs value={value} onChange={handleChange}>
-            <Tab label={<h4>Thông tin kiểm định</h4>} />
-            <Tab label={<h4>Xe tới kì kiểm định</h4>} />
-            <Tab label={<h4>Cập nhật thông tin</h4>} />
+            <Tab label={<h4> Phương tiện vận tải TX</h4>} />
+            <Tab label={<h4>Kiểm định phương tiện</h4>} />
             </Tabs>
         </AppBar>
-        {value === 0 && <div className={classes.page}>khanh</div>}
-        {value === 1 && <div className={classes.page}>trong</div>}
-        {value === 2 && <div className={classes.page}>Bui</div>}
+        {value === 0 && <div className={classes.page}>
+        <RegularVehicles
+          vehicles={vehicles.data} 
+          setValue={setValue} 
+          selectVehicle={selectVehicle}
+          commands={commands.data}
+          />
+          </div>}
+        {value === 1 && <div className={classes.page}>
+          <InforVerify
+            vehicles={vehicles.data}
+            selectVehicle={selectVehicle}
+            updateVehicle={updateVehicle}
+            updateData={updateData} 
+          />
+        </div>}
         </div>
   );
 }

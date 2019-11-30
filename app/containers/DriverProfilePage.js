@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import { connect } from 'react-redux';
 import Wrapper from '../components/HostWrapper';
 import Profile from '../components/Driver/Profile';
+import {getErrs} from '../actions/erros.actions';
 import {
   getAll,
   addDriver,
@@ -13,7 +14,8 @@ import {
 const mapStateToProps = state=>{
   return {
     drivers: state.drivers,
-    updateData: state.selectDriver
+    updateData: state.selectDriver,
+    errs: state.errs
   }
 };
 
@@ -35,6 +37,7 @@ export default connect(
     addDriver,
     deleteDriver,
     selectDriver,
-    updateDriver
+    updateDriver,
+    getErrs
   }
 )(DriveProfilePage);

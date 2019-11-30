@@ -3,20 +3,21 @@ import { connect } from 'react-redux';
 import Wrapper from '../components/HostWrapper';
 import Profile from '../components/Vehicle/Profile';
 import {getAll, addVehicle, deleteVehicle, selectVehicle, updateVehicle} from '../actions/vehicle.actions'
+import {getErrs} from '../actions/erros.actions';
 
 const mapStateToProps = state=>{
   return {
     vehicles: state.vehicles,
-    updateData: state.selectVehicles
+    updateData: state.selectVehicles,
+    errs: state.errs
   }
 };
 
 const VehicleProfilePage = (props)=>{
   const {getAll, vehicles} = props;
-  console.log(vehicles)
   useEffect(()=>{
-    getAll()
-  }, [vehicles.isUpdate])
+    getAll();
+  },[vehicles.isUpdate])
     return(
         <Wrapper>
             <Profile vehicleProps={props}/>
@@ -30,6 +31,7 @@ export default connect(
     addVehicle,
     deleteVehicle,
     selectVehicle,
-    updateVehicle
+    updateVehicle,
+    getErrs
   }
 )(VehicleProfilePage);

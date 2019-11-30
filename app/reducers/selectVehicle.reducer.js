@@ -2,20 +2,33 @@ import {SELECT_VEHICLE} from "../constants/actions";
 
 const initialState = {
     isSelected: false,
-    driver:{
-            level: "",
-            name: "",
-            birthday: "",
-            start: "",
-            number: "",
-            end: "",
-            rank: "",
-            position: "",
-            registArea:"",
-            unit: "",
-            degree: "",
-            uses:"",
-            dateReceive:""
+    vehicle:{
+            brand: '',
+            type: '',
+            limit: '',
+            number: '',
+            fuel:'',
+            date: '',
+            sourse:'',
+            chassis: '',
+            engine: '',
+            owned: '',
+            status: '',
+            startDate:'',
+            productDate: '',
+            level: '',
+            uses:'',
+            infor: '',
+            base64: '',
+            verify: {
+                start: '',
+                end: ''
+            },
+            equiments: {
+                tires: [],
+                batterys: []
+            }
+
         }
 };
 

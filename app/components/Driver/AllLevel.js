@@ -90,12 +90,12 @@ function AllLevel(props) {
        changeKey(e.target.value)
     }
     const Driver = (row, index)=>{
-        return <StyledTableRow key={row.name}>
-        <StyledTableCell component="th" scope="row">{index+1}</StyledTableCell>
-        <StyledTableCell align="center">{row.name}</StyledTableCell>
-        <StyledTableCell align="center">{row.unit}</StyledTableCell>
-        <StyledTableCell align="center">{row.degree}</StyledTableCell>
-        <StyledTableCell align="center">{row.DateReceive}</StyledTableCell>
+        return <StyledTableRow  align="center"key={row.name}>
+        <StyledTableCell align="center" component="th" scope="row">{index+1}</StyledTableCell>
+        <StyledTableCell align="center" >{row.name}</StyledTableCell>
+        <StyledTableCell align="center" >{row.unit}</StyledTableCell>
+        <StyledTableCell  align="center">{row.degree}</StyledTableCell>
+        <StyledTableCell align="center" >{row.dateReceive}</StyledTableCell>
         
     </StyledTableRow>
     }
@@ -148,19 +148,19 @@ function AllLevel(props) {
             <Table className={classes.table}>
             <TableHead>
                     <TableRow style={{ background: "#3f51b5" }}>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             STT
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             Họ và tên 
                         </StyledTableCell>
                         <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             Đơn vị
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             Bậc kĩ thuật
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             Năm nhận
                         </StyledTableCell>
                     </TableRow>

@@ -4,9 +4,11 @@ import {
         ADD_VEHICLES,
         DELETE_VEHICLE,
         SELECT_VEHICLE,
-        UPDATE_VEHICLE
+        UPDATE_VEHICLE,
+        GET_ERRS
     } from '../constants/actions';
 import setAuthHeader from '../utils/setAuthHeader';
+import {getErrs} from './erros.actions'
 
 export const getAll = () => async dispatch => {
     try{
@@ -21,17 +23,17 @@ export const getAll = () => async dispatch => {
     }
    
 };
-export const addVehicle = (data) => async dispatch => {
+export const addVehicle = (data, func) => async dispatch => {
     try{
         await setAuthHeader(localStorage.getItem('jwt'));
-        callApi('post', '/vehicles/create', data);
+        const vehicle = await callApi('post', '/vehicles/create', data);
         await dispatch({
             type: ADD_VEHICLES,
-            payload: data
+            payload: vehicle.data
         })
-
+        func()
     }catch(err){
-        alert(err.response.data)
+        await dispatch(getErrs(err.response.data))
     }  
 };
 export const deleteVehicle = (id) => async dispatch => {
@@ -46,7 +48,7 @@ export const deleteVehicle = (id) => async dispatch => {
         console.log(err)
     }
 };
-export const updateVehicle = (id, data) => async dispatch => {
+export const updateVehicle = (id, data, func) => async dispatch => {
     try{
         await setAuthHeader(localStorage.getItem('jwt'));
         callApi("post", `/vehicles/update/${id}`, data );
@@ -56,7 +58,8 @@ export const updateVehicle = (id, data) => async dispatch => {
                 id,
                 data
             }
-        })
+        });
+        func();
     }catch(err){
         console.log(err)
     }

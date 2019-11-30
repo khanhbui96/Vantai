@@ -92,11 +92,11 @@ function FilterLevel(props) {
     }
     const Driver = (row, index)=>{
         return <StyledTableRow key={row.name}>
-        <StyledTableCell component="th" scope="row">{index+1}</StyledTableCell>
+        <StyledTableCell align="center" component="th" scope="row">{index+1}</StyledTableCell>
         <StyledTableCell align="center">{row.name}</StyledTableCell>
         <StyledTableCell align="center">{row.unit}</StyledTableCell>
         <StyledTableCell align="center">{row.degree}</StyledTableCell>
-        <StyledTableCell align="center">{row.DateReceive}</StyledTableCell>
+        <StyledTableCell align="center">{row.dateReceive}</StyledTableCell>
         
     </StyledTableRow>
     }
@@ -109,25 +109,25 @@ function FilterLevel(props) {
     }
     return (
         <Paper className={classes.root}>
-            <Typography style={{ textAlign: 'center' }} variant='h4'>Danh sách lái xe thi nâng bậc trong năm ... trong đơn vị</Typography>
+            <Typography style={{ textAlign: 'center' }} variant='h4'>Danh sách lái xe thi nâng bậc trong năm {new Date().getFullYear()} trong đơn vị</Typography>
             
 
             <Table className={classes.table}>
             <TableHead>
                     <TableRow style={{ background: "#3f51b5" }}>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             STT
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             Họ và tên 
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center" >
                             Đơn vị
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             Bậc kĩ thuật
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
                             Năm nhận
                         </StyledTableCell>
                     </TableRow>

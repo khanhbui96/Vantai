@@ -201,18 +201,7 @@ function Wrapper({ history, children }) {
                   primary="Trang thiết bị phương tiện"
                 />
               </ListItem>
-            </Link>
-            <Link to="/host/vehical/verify">
-              <ListItem button style={{ paddingLeft: 76 }}>
-                <ListItemText
-                  onClick={e => {
-                    changeTopic(e.target.innerText);
-                  }}
-                  primary="Kiểm định phương tiện "
-                />
-              </ListItem>
-            </Link>
-          </Collapse>
+            </Link></Collapse>
           <List onClick={() => setOpen(true)}>
             <ListItem button>
               <ListItemIcon>
@@ -259,7 +248,6 @@ function Wrapper({ history, children }) {
             </Link>
           </Collapse>
           <List onClick={() => setOpen(true)}>
-            <Link to="/host/approveCommand">
               <ListItem button>
                 <ListItemIcon>
                   <AssignmentIcon />
@@ -268,11 +256,33 @@ function Wrapper({ history, children }) {
                   onClick={e => {
                     changeTopic(e.target.innerText);
                   }}
+                  primary="Vận tải thường xuyên"
+                />
+              </ListItem>
+          </List>
+          <Collapse in={open} timeout="auto">
+             <Link to="/host/vehical/verify">
+              <ListItem button style={{ paddingLeft: 76 }}>
+                <ListItemText
+                  onClick={e => {
+                    changeTopic(e.target.innerText);
+                  }}
+                  primary="Phương tiện vân tải TX"
+                />
+              </ListItem>
+            </Link>
+            <Link to="/host/approveCommand">
+              <ListItem button style={{ paddingLeft: 76 }}>
+                <ListItemText
+                  onClick={e => {
+                    changeTopic(e.target.innerText);
+                  }}
                   primary="Lệnh vận chuyển"
                 />
               </ListItem>
             </Link>
-          </List>
+          </Collapse>
+         
           <List onClick={() => setOpen(true)}>
             <Link to="/host/driver/defineLevel">
               <ListItem button>

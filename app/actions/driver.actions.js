@@ -7,6 +7,7 @@ import {
         UPDATE_DRIVER
     } from '../constants/actions';
 import setAuthHeader from '../utils/setAuthHeader';
+import {getErrs} from './erros.actions'
 
 export const getAll = () => async dispatch => {
     try{
@@ -21,17 +22,17 @@ export const getAll = () => async dispatch => {
     }
    
 };
-export const addDriver = (data) => async dispatch => {
+export const addDriver = (data, func) => async dispatch => {
     try{
         await setAuthHeader(localStorage.getItem('jwt'));
-        callApi('post', '/drivers/create', data);
+        const driver = await callApi('post', '/drivers/create', data);
         await dispatch({
             type: ADD_DRIVER,
-            payload: data
+            payload: driver.data
         })
-
+        func()
     }catch(err){
-        alert(err.response.data)
+        await dispatch(getErrs(err.response.data))
     }  
 };
 export const deleteDriver = (id) => async dispatch => {
@@ -46,7 +47,7 @@ export const deleteDriver = (id) => async dispatch => {
         console.log(err)
     }
 };
-export const updateDriver = (id, data) => async dispatch => {
+export const updateDriver = (id, data, func) => async dispatch => {
     try{
         await setAuthHeader(localStorage.getItem('jwt'));
         callApi("post", `/drivers/update/${id}`, data );
@@ -57,6 +58,7 @@ export const updateDriver = (id, data) => async dispatch => {
                 data
             }
         })
+        func()
     }catch(err){
         console.log(err)
     }

@@ -90,7 +90,7 @@ function AllProfile(props) {
     }
     const Vehicle = (row, index)=>{
         return <StyledTableRow key={index}>
-        <StyledTableCell component="th" scope="row">{index+1}</StyledTableCell>
+        <StyledTableCell component="th" align="center" scope="row">{index+1}</StyledTableCell>
         <StyledTableCell align="center">{row.brand}</StyledTableCell>
         <StyledTableCell align="center">{row.type}</StyledTableCell>
         <StyledTableCell align="center">{row.fuel}</StyledTableCell>
@@ -155,22 +155,22 @@ function AllProfile(props) {
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow style={{ background: "#3f51b5" }}>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell align="center" style={{ background: "#3f51b5" }}>
                             STT
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell align="center" style={{ background: "#3f51b5" }}>
                             Nhãn xe chuyên dùng
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell align="center" style={{ background: "#3f51b5" }}>
                             Loại phương tiện
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell align="center" style={{ background: "#3f51b5" }}>
                             Nhiên liệu sử dụng
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }}>
+                        <StyledTableCell align="center" style={{ background: "#3f51b5" }}>
                             Số đăng kí
                         </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">
+                        <StyledTableCell align="center" style={{ background: "#3f51b5" }} align="center">
                             Thời gian đăng kí
                         </StyledTableCell>
                         
@@ -180,7 +180,7 @@ function AllProfile(props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {filterVehicles(vehicles)}
+                    {filterVehicles(vehicles.data)}
                 </TableBody>
             </Table>
         </Paper>

@@ -45,7 +45,7 @@ const CreateCommand = (props) => {
           flexDirection: 'column'
         }}
       >
-        <Typography align="center">LỆNH ĐIỀU PHƯƠNG TIỆN</Typography>
+        <Typography align="center" variant="h5" style={{margin: 10}} >LỆNH ĐIỀU PHƯƠNG TIỆN</Typography>
         <Grid>
           <TextField
             style={{ width: '60vw', marginBottom: 24 }}

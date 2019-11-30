@@ -89,7 +89,7 @@ function AllProfile(props) {
        changeKey(e.target.value)
     }
     const Driver = (row, index)=>{
-        return <StyledTableRow key={row.name}>
+        return <StyledTableRow key={index}>
         <StyledTableCell component="th" scope="row">{index+1}</StyledTableCell>
         <StyledTableCell component="th" scope="row">{row.name}</StyledTableCell>
         <StyledTableCell align="center">{row.birthday}</StyledTableCell>

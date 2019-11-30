@@ -16,8 +16,19 @@ const useStyles = makeStyles(theme => ({
 const Profile = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const {vehicles, addVehicle, deleteVehicle, selectVehicle, updateData, updateVehicle} = props.vehicleProps;
+  const {
+    vehicles,
+    addVehicle, 
+    deleteVehicle, 
+    selectVehicle, 
+    updateData, 
+    updateVehicle, 
+    errs, 
+    getErrs,
+    getAll,
+  } = props.vehicleProps;
   function handleChange(event, newValue) {
+    getErrs({});
     setValue(newValue);
   }
   return (
@@ -30,7 +41,7 @@ const Profile = props => {
         </AppBar>
         {value === 0 && <div className={classes.page}>
           <AllProfile 
-            vehicles={vehicles.data} 
+            vehicles={vehicles}
             deleteVehicle={deleteVehicle} 
             setValue={setValue} 
             selectVehicle={selectVehicle}
@@ -38,7 +49,9 @@ const Profile = props => {
           </div>}
         {value === 1 && <div className={classes.page}>
           <CreateProfile 
-            addVehicle={addVehicle} 
+            addVehicle={addVehicle}
+            errs = {errs}
+            getErrs={getErrs} 
             setValue={setValue} 
             updateData={updateData}
             selectVehicle={selectVehicle}

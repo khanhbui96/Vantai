@@ -55,7 +55,16 @@ const useStyles = makeStyles(theme => ({
 function DefineLevelList(props) {
     const classes = useStyles();
   
-    const {addDefineLevel, defineLevels, updateDefineLevel ,deleteDefineLevel, selectDefineLevel, updateData} = props.defineLevelProps;
+    const {
+        addDefineLevel, 
+        defineLevels, 
+        updateDefineLevel ,
+        deleteDefineLevel, 
+        selectDefineLevel, 
+        updateData,
+        errs,
+        getErrs
+    } = props.defineLevelProps;
     const [open, setOpen] = React.useState(false);
     const [status, setStatus] = React.useState('');
     const [keyword, setKeyword] = React.useState('');
@@ -66,18 +75,15 @@ function DefineLevelList(props) {
     function handleClose() {
         setOpen(false);
     }
-    const handleChange = (e) => {
-        console.log(e.target.value)
-    };
     const DefineLevel = (defineLevel, index)=>{
-        return <TableRow >
-                            <StyledTableCell>{index+1}</StyledTableCell>
-                            <StyledTableCell align="left">{defineLevel.label} </StyledTableCell>
-                            <StyledTableCell align="left">{defineLevel.fluel}</StyledTableCell>
-                            <StyledTableCell align="left">{defineLevel.define1}</StyledTableCell>
-                            <StyledTableCell align="left">{defineLevel.define2}</StyledTableCell>
+        return <TableRow key={index} >
+                            <StyledTableCell align="center">{index+1}</StyledTableCell>
+                            <StyledTableCell align="center">{defineLevel.label} </StyledTableCell>
+                            <StyledTableCell align="center">{defineLevel.fluel}</StyledTableCell>
+                            <StyledTableCell align="center">{defineLevel.define1}</StyledTableCell>
+                            <StyledTableCell align="center">{defineLevel.define2}</StyledTableCell>
                            
-                            <StyledTableCell align="left" >
+                            <StyledTableCell align="center" >
                                 <Button
                                     onClick={() => {
                                         selectDefineLevel(defineLevel)
@@ -141,6 +147,8 @@ function DefineLevelList(props) {
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <div>
                         <AddDefineLevel
+                            errs={errs}
+                            getErrs = {getErrs} 
                             handleClose={handleClose}
                             addDefineLevel={addDefineLevel}
                             updateData={updateData}
@@ -155,11 +163,11 @@ function DefineLevelList(props) {
                 <TableHead>
                     <TableRow style={{ background: "#3f51b5" }}>
                         <StyledTableCell style={{ background: "#3f51b5" }}>STT</StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }} align="left">Tên trang bị</StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }} align="left">Tên nhiên liệu </StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }} align="left">Định mức Theo TT/59 của BQP</StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }} align="left">Định mức Thường xuyên của Quân đoàn</StyledTableCell>
-                        <StyledTableCell style={{ background: "#3f51b5" }} align="left">Thao tác</StyledTableCell>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">Tên trang bị</StyledTableCell>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">Tên nhiên liệu </StyledTableCell>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">Định mức Theo TT/59 của BQP</StyledTableCell>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">Định mức Thường xuyên của Quân đoàn</StyledTableCell>
+                        <StyledTableCell style={{ background: "#3f51b5" }} align="center">Thao tác</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

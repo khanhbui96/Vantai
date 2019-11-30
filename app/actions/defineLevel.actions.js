@@ -7,6 +7,7 @@ import {
         UPDATE_DEFINE_LEVEL
     } from '../constants/actions';
 import setAuthHeader from '../utils/setAuthHeader';
+import {getErrs} from './erros.actions'
 
 export const getAll = () => async dispatch => {
     try{
@@ -21,17 +22,17 @@ export const getAll = () => async dispatch => {
     }
    
 };
-export const addDefineLevel = (data) => async dispatch => {
+export const addDefineLevel = (data, func) => async dispatch => {
     try{
         await setAuthHeader(localStorage.getItem('jwt'));
-        callApi('post', '/defineLevels/create', data);
+        const defineLevel = await callApi('post', '/defineLevels/create', data);
         await dispatch({
             type: ADD_DEFINE_LEVEL,
-            payload: data
+            payload: defineLevel.data
         })
-
+        func()
     }catch(err){
-        alert(err.response.data)
+        dispatch(getErrs(err.response.data))
     }  
 };
 export const deleteDefineLevel = (id) => async dispatch => {

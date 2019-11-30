@@ -15,6 +15,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import MotorcycleIcon from '@material-ui/icons/Motorcycle';
 import {
   Mail,
   FindInPage,
@@ -199,6 +200,19 @@ function Wrapper({ history, children }) {
                   changeTopic(e.target.innerText);
                 }}
                 primary="Đăng kí lệnh vận chuyển"
+              />
+            </ListItem>
+          </Link>
+          <Link to="/guest/motoBikes">
+            <ListItem button onClick={() => setOpen(true)}>
+              <ListItemIcon>
+                <MotorcycleIcon/>
+              </ListItemIcon>
+              <ListItemText
+                onClick={e => {
+                  changeTopic(e.target.innerText);
+                }}
+                primary="Quản lí phương tiện đơn vị"
               />
             </ListItem>
           </Link>

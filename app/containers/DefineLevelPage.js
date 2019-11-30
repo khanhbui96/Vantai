@@ -9,12 +9,15 @@ import {
   deleteDefineLevel,
   updateDefineLevel,
   selectDefineLevel
-} from '../actions/defineLevel.actions'
+} from '../actions/defineLevel.actions';
+import {getErrs} from '../actions/erros.actions';
+
 
 const mapStateToProps = state=>{
   return {
     defineLevels: state.defineLevel,
-    updateData: state.selectDefineLevel
+    updateData: state.selectDefineLevel,
+    errs: state.errs
   }
 };
 
@@ -36,6 +39,7 @@ export default connect(
     addDefineLevel,
     deleteDefineLevel,
     updateDefineLevel,
-    selectDefineLevel
+    selectDefineLevel,
+    getErrs
   }
 )(DefineLevelPage);

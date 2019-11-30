@@ -99,7 +99,7 @@ function AllCommand(props) {
         <StyledTableCell style={{color: !row.status ? 'red' : ''}} align="center">
           {moment(row.time).format('DD/MM/YYYY')}
         </StyledTableCell>
-        <StyledTableCell style={{color: !row.status ? 'red' : ''}} align="center">{row.status ? 'Đã phê duyeet' : "Chưa phê duyệt"}</StyledTableCell>
+        <StyledTableCell style={{color: !row.status ? 'red' : ''}} align="center">{row.status ? 'Đã phê duyệt' : "Chưa phê duyệt"}</StyledTableCell>
         <StyledTableCell align="center">
           <Button
             style={{marginRight: 10}}

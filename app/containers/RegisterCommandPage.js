@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { connect } from 'react-redux';
 import Wrapper from '../components/GuestWrapper';
 import Command from '../components/RegisterCommand/Command';
-import {addCommand, getAll, selectCommand} from '../actions/command.actions';
+import {addCommand, getAllCommand, selectCommand} from '../actions/command.actions';
 
 const mapStateToProps = state=>{
   return {
@@ -11,9 +11,9 @@ const mapStateToProps = state=>{
   }
 }
 const RegisterCommandPage = (props)=>{
-  const {getAll, commands} = props;
+  const {getAllCommand, commands} = props;
   useEffect(()=>{
-    getAll()
+    getAllCommand()
   }, [commands.isUpdate])
     return(
         <Wrapper>
@@ -25,7 +25,7 @@ export default connect(
   mapStateToProps,
   {
     addCommand,
-    getAll,
+    getAllCommand,
     selectCommand
   }
 )(RegisterCommandPage);

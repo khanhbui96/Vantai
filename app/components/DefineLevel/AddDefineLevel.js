@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select'
 import IconButton from '@material-ui/core/IconButton';
 import Dialog from '@material-ui/core/Dialog'
 import {Subtitles} from '@material-ui/icons'
+import { setServers } from 'dns';
 const useStyles = makeStyles(theme => ({
     formControl: {
         minWidth: '100%',
@@ -19,34 +20,60 @@ const useStyles = makeStyles(theme => ({
         marginTop: 16
     }
 }));
-
+const currencies1 = [
+    {
+      value: '',
+      label: ''
+    },
+    {
+      value: 'Xăng',
+      label: 'Xăng'
+    },
+    {
+      value: 'Dầu Diezen',
+      label: 'Dầu diezen'
+    }
+  ];
 const AddDefineLevel = (props)=>{
     const classes = useStyles();
     
-    const {updateData, selectDefineLevel, updateDefineLevel} = props
+    const {
+        updateData, 
+        selectDefineLevel, 
+        updateDefineLevel,
+        addDefineLevel,
+        handleClose,
+        errs,
+        getErrs
+    } = props
     const [data, changeData]= React.useState({...updateData.data})
     const [open, setOpen] = React.useState(false);
+    const handleCreate = ()=>{
+        addDefineLevel({
+            ...data
+        }, ()=>{
+            getErrs({});
+            handleClose(false)
+        });
+        
+    }
     function handleClickOpen() {
         setOpen(true);
       }
     
-      function handleClose() {
-        setOpen(false);
-      }
-    function handleDateChange(date) {
-        setSelectedDate(date);
-        setTime(formatDate(date));
-    };
     const handleChange = (e)=>{
         changeData({
             ...data,
            [ e.target.name]: e.target.value 
         })
     };
+    const handleChangeSelect = name => event => {
+        changeData({ ...data, [name]: event.target.value });
+      };
     return(
         <React.Fragment>
             {props.collection ? <DialogTitle id="form-dialog-title">Sửa</DialogTitle> : <DialogTitle id="form-dialog-title">Thêm định mức mới</DialogTitle>}
-            <DialogContent>
+            <DialogContent >
                     
                         <TextField
                             margin="dense"
@@ -56,14 +83,32 @@ const AddDefineLevel = (props)=>{
                             name='label'
                             value={data.label}
                             onChange={handleChange}
+                            error = {errs.label ? true : false}
+                            helperText={errs.label ? errs.label : ''}
                         />
                         <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Tên nhiên liệu</InputLabel>
-                        <Select native defaultValue={data.fluel} name='fluel' onChange={handleChange}>
-                            <option value="" />
-                            <option value='Xăng'>Xăng</option>
-                            <option value='Dầu Diezen'> Dầu Diezen</option>
-                        </Select>
+                       
+                        <TextField
+                            select
+                            label="Tên nhiên liệu"
+                            style={{ width: '100%', marginBottom: 24 }}
+                            value={data.fluel}
+                            onChange={handleChangeSelect('fluel')}
+                            SelectProps={{
+                                native: true,
+                                MenuProps: {
+                                className: classes.menu
+                                }
+                            }}
+                            error = {errs.fluel ? true : false}
+                            helperText={errs.fluel ? errs.fluel : ''}
+                            >
+                            {currencies1.map(option => (
+                                <option key={option.value} value={option.value}>
+                                {option.label}
+                                </option>
+                            ))}
+                        </TextField>
                     </FormControl>
                         <TextField
                             margin="dense"
@@ -88,12 +133,7 @@ const AddDefineLevel = (props)=>{
                     <DialogActions>
 
                     { !updateData.isSelected ? <Button 
-                                    onClick={()=>{
-                                        props.addDefineLevel({
-                                            ...data
-                                        });
-                                        props.handleClose(false)
-                                    }} 
+                                    onClick={handleCreate} 
                                     style={{marginBottom: 10}} 
                                     variant = "outlined" 
                                     color='primary' 
@@ -121,7 +161,7 @@ const AddDefineLevel = (props)=>{
                                         define1: "",
                                         define2: "",
                                     });
-                                    props.handleClose(false)
+                                    handleClose(false)
                                 }} 
                                 >
                                     Hủy

@@ -21,7 +21,7 @@ const vehicles = (state=initialState, action)=>{
                     ...state.data,
                     action.payload
                 ]
-            }
+            };
         case DELETE_VEHICLE:
             return {
                 isUpdate: true,

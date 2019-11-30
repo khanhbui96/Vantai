@@ -32,12 +32,15 @@ const CreateCommand = (props) => {
 
   const handleClick = () => {
     updateCommand(data._id, {...data,status: true })
+    setValue(0)
+    
+  };
+  const handleExport = ()=>{
     renderToDocx({...data})
     alert('Xong')
-  };
+  }
   const createCommand = ()=>{
     addCommand({...data, status: true })
-    renderToDocx({...data})
   }
   useEffect(()=>{
     
@@ -53,7 +56,7 @@ const CreateCommand = (props) => {
           flexDirection: 'column'
         }}
       >
-        <Typography align="center">LỆNH ĐIỀU PHƯƠNG TIỆN</Typography>
+        <Typography align="center" variant="h5" style={{margin: 10}} >LỆNH ĐIỀU PHƯƠNG TIỆN</Typography>
         <Grid>
           <TextField
             style={{ width: '60vw', marginBottom: 24 }}
@@ -342,12 +345,18 @@ const CreateCommand = (props) => {
           color="primary" >
             Xem xong
           </Button>
-          <Button variant="contained" color="primary" style={{ marginLeft: 6 }} onClick={handleClick} >
-            Phê duyệt và xuất lệnh ra văn bản
+          {!data.status ? <Button variant="contained" color="primary" style={{ marginLeft: 6 }} onClick={handleClick} >
+            Phê duyệt 
+          </Button> : null}
+          <Button variant="contained" color="primary" style={{ marginLeft: 6 }} onClick={handleExport} >
+            Xuất lệnh ra văn bản
           </Button>
           </div> :  <div>
           <Button variant="contained" color="primary" style={{ marginLeft: 6 }} onClick={createCommand} >
-            Tạo lệnh và xuất lệnh ra văn bản
+            Tạo lệnh 
+          </Button>
+          <Button variant="contained" color="primary" style={{ marginLeft: 6 }} onClick={handleExport} >
+            Xuất lệnh ra văn bản
           </Button>
           
         </div>}

@@ -12,6 +12,8 @@ import defineLevel from './defineLevel.reducer'
 import selectDefineLevel from './selectDefineLevel.reducer'
 import commands from './command.reducer';
 import selectCommand from './selectCommand.reducer';
+import motoBike from './motoBike.reducer';
+import selectMotoBike from './selectMotoBike.reducer'
 
 export default function createRootReducer(history: History) {
   return combineReducers<{}, *>({
@@ -26,6 +28,8 @@ export default function createRootReducer(history: History) {
     defineLevel,
     selectDefineLevel,
     commands,
-    selectCommand
+    selectCommand,
+    motoBike,
+    selectMotoBike
   });
 }

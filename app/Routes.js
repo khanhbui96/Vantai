@@ -18,6 +18,7 @@ import DriverProfilePage from './containers/DriverProfilePage';
 import DefineLevelPage from './containers/DefineLevelPage';
 import RegisterCommandPage from './containers/RegisterCommandPage';
 import ApproveCommandPage from './containers/ApproveCommandPage'
+import MotobikePage from './containers/MotobikePage';
 
 export default () => (
   <App>
@@ -32,6 +33,7 @@ export default () => (
       <Route path='/host/vehical/equiment' component={VehicleEquimentPage}/>
       <Route path='/host/vehical/profile' component={VehicleProfilePage}/>
       <Route path='/host' component={HostAboutPage}/>
+      <Route path='/guest/motoBikes' component={MotobikePage}/> 
       <Route path='/guest/registerCommand' component={RegisterCommandPage}/> 
       <Route path='/guest/calculation' component={CalculationPage}/>
       <Route path='/guest/select' component={SelectCarPage}/>

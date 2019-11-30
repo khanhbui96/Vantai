@@ -16,8 +16,18 @@ const useStyles = makeStyles(theme => ({
 const Profile = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const {drivers, addDriver, deleteDriver, selectDriver, updateData, updateDriver} = props.driverProps;
+  const {
+    drivers, 
+    addDriver, 
+    deleteDriver, 
+    selectDriver, 
+    updateData, 
+    updateDriver,
+    errs,
+    getErrs
+  } = props.driverProps;
   function handleChange(event, newValue) {
+    getErrs({})
     setValue(newValue);
   }
 
@@ -39,6 +49,8 @@ const Profile = props => {
         </div>}
         {value === 1 && <div className={classes.page}>
           <CreateProfile
+            errs={errs}
+            getErrs={getErrs}
             addDriver={addDriver} 
             setValue={setValue} 
             updateData={updateData}

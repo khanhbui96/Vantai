@@ -39,7 +39,7 @@ export default function Register(props) {
       password2:''
     }
   });
-  const {errs, registerUser, history} = props;
+  const {errs, registerUser, history, getErrs} = props;
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -127,7 +127,16 @@ export default function Register(props) {
                 onChange={handleOnChange}
             />
             <Button variant="outlined" onClick={handleClick}>Đăng kí</Button>
-            <Typography style={{marginTop: 8}}>(Quay lại <Link to='/' style={{color: 'blue'}}>Đăng nhập</Link> ) </Typography>
+            <Typography style={{marginTop: 8}}>(Quay lại {' '}
+              <Link 
+                to='/' 
+                style={{color: 'blue'}}
+                onClick={()=>{
+                  getErrs({})
+                }}
+                >
+                Đăng nhập
+              </Link> ) </Typography>
         </Paper>
     </div>
   );

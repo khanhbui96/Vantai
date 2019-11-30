@@ -1,4 +1,4 @@
-import {SELECT_DEFINE_LEVEL, SET_DISTANCE} from "../constants/actions";
+import {SELECT_DEFINE_LEVEL} from "../constants/actions";
 
 const initialState = {
     isSelected: false,

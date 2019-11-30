@@ -7,6 +7,7 @@ import { hot } from 'react-hot-loader/root';
 import type { Store } from '../reducers/types';
 import Routes from '../Routes';
 
+
 type Props = {
   store: Store,
   history: {}

@@ -18,6 +18,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button'
 import { red } from '@material-ui/core/colors';
+import moment from 'moment'
 
 
 const StyledTableCell = withStyles(theme => ({
@@ -87,9 +88,6 @@ function FilterCertificate(props) {
     const classes = useStyles();
     const {drivers} = props;
     const [key, changeKey] = React.useState('')
-    const handleChange = (e) => {
-       changeKey(e.target.value)
-    }
     const Driver = (row, index)=>{
         return <StyledTableRow key={row.name}>
         <StyledTableCell component="th"  align="center" scope="row">{index+1}</StyledTableCell>
@@ -103,14 +101,14 @@ function FilterCertificate(props) {
     }
     const filterDrivers = (drivers)=>{
         return drivers.filter(driver=> {
-            return driver.name.indexOf(key) !== -1 || driver.unit.indexOf(key) !== -1 
+            return driver.end == (new Date().getFullYear()+1) 
         } ).map((driver, index)=>{
             return Driver(driver, index)
         })
     }
     return (
         <Paper className={classes.root}>
-            <Typography style={{ textAlign: 'center' }} variant='h4'>Danh sách bằng lái xe cần đổi trong năm ... đơn vị</Typography>
+            <Typography style={{ textAlign: 'center', margin: 20 }} variant='h4'>{`Danh sách bằng lái xe cần đổi trong năm ${new Date().getFullYear()} đơn vị`}</Typography>
             
 
             <Table className={classes.table}>
